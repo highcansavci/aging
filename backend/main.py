@@ -7,5 +7,4 @@ app = FastAPI()
 setup_logging()
 app.include_router(sam_aging_router)
 app.include_router(adfd_aging_router)
-app.include_router(sam_aging_router)
-app.include_router(adfd_aging_router)
+
