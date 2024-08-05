@@ -1,4 +1,4 @@
-from sam_model.inference.inference import inference, check_face_availablilty
+from adfd_model.inference.inference import inference, check_face_availablilty
 from PIL import Image
 import io
 import base64
@@ -22,7 +22,7 @@ class AgingService:
 
     @staticmethod
     def aging_task(np_arr):
-        logging.info("Executing aging task in the sam model service layer.")
+        logging.info("Executing aging task in the adfd model service layer.")
         result = inference(np_arr)
         return {
             'age_10': AgingService.__numpy2base64(np_arr[0:1024, ...]),
@@ -33,5 +33,6 @@ class AgingService:
 
     @staticmethod
     def check_face_alignment(np_arr):
-        logging.info("Checking face alignment in the sam model service layer.")
+        logging.info(
+            "Checking face alignment in the adfd model service layer.")
         return check_face_availablilty(np_arr)

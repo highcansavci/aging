@@ -1,3 +1,5 @@
 /venv
 sam_model/pretrained_models/sam_ffhq_aging.pt
 sam_model/pretrained_models/shape_predictor_68_face_landmarks.dat
+adfd_model/pretrained_models/sam_ffhq_aging.pt
+adfd_model/pretrained_models/shape_predictor_68_face_landmarks.dat
