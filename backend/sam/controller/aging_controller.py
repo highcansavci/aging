@@ -1,4 +1,4 @@
-from backend.sam.service.aging_service import AgingService
+from sam.service.aging_service import AgingService
 import logging
 
 

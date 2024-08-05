@@ -1,0 +1,12 @@
+dlib==19.24.5
+fastapi==0.112.0
+numpy==2.0.1
+pandas==2.2.2
+Pillow==10.4.0
+scipy==1.14.0
+torch==2.4.0+cu121
+torchvision==0.19.0+cu121
+tqdm==4.66.5
+gdown
+uvicorn
+Ninja

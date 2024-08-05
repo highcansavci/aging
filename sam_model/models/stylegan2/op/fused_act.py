@@ -6,12 +6,14 @@ from torch.autograd import Function
 from torch.utils.cpp_extension import load
 
 module_path = os.path.dirname(__file__)
+print(os.path.join(module_path, 'fused_bias_act.cpp'))
 fused = load(
     'fused',
     sources=[
         os.path.join(module_path, 'fused_bias_act.cpp'),
         os.path.join(module_path, 'fused_bias_act_kernel.cu'),
     ],
+    extra_cuda_cflags=['-allow-unsupported-compiler']
 )
 
 

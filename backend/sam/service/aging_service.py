@@ -1,3 +1,6 @@
+import sys
+sys.path.append("..")
+sys.path.append("../..")
 from sam_model.inference.inference import inference, check_face_availablilty
 from PIL import Image
 import io
@@ -18,7 +21,7 @@ class AgingService:
         image_data = buffer.getvalue()
         # Encode the image data to Base64
         base64_encoded = base64.b64encode(image_data).decode('utf-8')
-        return np_arr
+        return base64_encoded
 
     @staticmethod
     def aging_task(np_arr):

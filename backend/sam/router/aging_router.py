@@ -3,7 +3,7 @@ import base64
 import io
 from PIL import Image
 import numpy as np
-from backend.sam.controller.aging_controller import AgingController
+from sam.controller.aging_controller import AgingController
 import logging
 
 router = APIRouter()
@@ -25,6 +25,10 @@ def execute_aging(base64_img):
 
     # Convert the image to a NumPy array
     numpy_array = np.array(image)
+    logging.info(
+        "Checking if any face is detected in the sam model router layer.")
+    if not AgingController.check_face_alignment(numpy_array):
+        return {'error': 'The face is not found.'}
     logging.info(
         "Starting to execute aging task in the sam model router layer.")
     return AgingController.aging_task(numpy_array)

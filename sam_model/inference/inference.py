@@ -13,8 +13,7 @@ ckpt = torch.load(model_path, map_location=DEVICE)
 opts = ckpt['opts']
 opts = Namespace(**opts)
 net = pSp(opts)
-predictor = dlib.shape_predictor(
-    "../pretrained_models/shape_predictor_68_face_landmarks.dat")
+predictor = dlib.shape_predictor(PREDICTOR_PATH)
 net.eval()
 img_transforms = EXPERIMENT_ARGS['transform']
 
@@ -43,7 +42,7 @@ def inference(img):
     aligned_image = run_alignment(img)
     aligned_image.resize((IMAGE_SIZE, IMAGE_SIZE))
     input_image = img_transforms(aligned_image)
-    results = np.array(aligned_image.resize((1024, 1024)))
+    results = np.zeros(shape=(1024, 1024))
 
     for age_transformer in AGE_TRANSFORMERS:
         print(f"Running on target age: {age_transformer.target_age}")
