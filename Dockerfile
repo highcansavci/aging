@@ -33,7 +33,9 @@ RUN mkdir -p pretrained_models
 
 # Download the required files
 RUN gdown "https://drive.google.com/u/0/uc?id=1XyumF6_fdAxFmxpFcmPf-q84LU_22EMC&export=download" -O pretrained_models/sam_ffhq_aging.pt && \
-    curl -o pretrained_models/shape_predictor_68_face_landmarks.dat https://github.com/italojs/facial-landmarks-recognition/raw/master/shape_predictor_68_face_landmarks.dat
+    gdown "https://drive.google.com/uc?id=1atzjZm_dJrCmFWCqWlyspSpr3nI6Evsh&export=download" -O pretrained_models/dex_age_classifier.pth && \
+    curl -L -o pretrained_models/shape_predictor_68_face_landmarks.dat https://github.com/italojs/facial-landmarks-recognition/raw/master/shape_predictor_68_face_landmarks.dat && \
+    curl -L -o pretrained_models/model_ir_se50.pth https://huggingface.co/spaces/ethanNeuralImage/inversion_testing/resolve/6208cab2e6f810b5e59b28bf6850e9a322f6718a/pretrained_models/model_ir_se50.pth
 
 # Expose the port that the app runs on
 EXPOSE 8000

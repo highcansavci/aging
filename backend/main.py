@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from backend.sam.router.aging_router import router as sam_aging_router
 from backend.adfd.router.aging_router import router as adfd_aging_router
-from log.config import setup_logging
+from backend.log.config import setup_logging
 
 app = FastAPI()
 setup_logging()

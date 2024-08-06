@@ -1,5 +1,5 @@
 from adfd_model.models.adfd import ADFD
-from options.test_options import TestOptions
+from adfd_model.options.test_options import TestOptions
 from adfd_model.config.config import *
 import torch.nn.functional as F
 import dlib
