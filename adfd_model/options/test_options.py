@@ -8,6 +8,8 @@ class TestOptions:
         self.initialize()
 
     def initialize(self):
+        self.parser.add_argument('--checkpoint_path', default="pretrained_models/sam_ffhq_aging.pt", type=str,
+                                 help='Path to pSp model checkpoint')
         self.parser.add_argument('--test_workers', default=2, type=int,
                                  help='Number of test/inference dataloader workers')
 

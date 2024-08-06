@@ -11,6 +11,7 @@ from PIL import Image
 model_path = EXPERIMENT_ARGS['model_path']
 ckpt = torch.load(model_path, map_location=DEVICE)
 opts = ckpt['opts']
+opts['checkpoint_path'] = model_path
 opts = Namespace(**opts)
 net = pSp(opts)
 predictor = dlib.shape_predictor(PREDICTOR_PATH)
