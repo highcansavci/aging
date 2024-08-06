@@ -14,7 +14,7 @@ opts = ckpt['opts']
 opts['checkpoint_path'] = model_path
 opts = Namespace(**opts)
 net = pSp(opts)
-predictor = dlib.shape_predictor(PREDICTOR_PATH)
+predictor = dlib.shape_predictor(str(PREDICTOR_PATH))
 net.eval()
 img_transforms = EXPERIMENT_ARGS['transform']
 

@@ -7,7 +7,7 @@ import numpy as np
 from PIL import Image
 
 
-predictor = dlib.shape_predictor(PREDICTOR_PATH)
+predictor = dlib.shape_predictor(str(PREDICTOR_PATH))
 opts = TestOptions().parse()
 model = ADFD(opts)
 
