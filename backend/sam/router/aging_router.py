@@ -3,7 +3,7 @@ import base64
 import io
 from PIL import Image
 import numpy as np
-from sam.controller.aging_controller import AgingController
+from backend.sam.controller.aging_controller import AgingController
 import logging
 
 router = APIRouter()
