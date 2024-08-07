@@ -14,13 +14,11 @@ from adfd_model.config.paths_config import model_paths
 SHAPE_PREDICTOR_PATH = model_paths["shape_predictor"]
 
 
-def get_landmark(filepath, predictor):
+def get_landmark(img, predictor):
     """get landmark with dlib
     :return: np.array shape=(68, 2)
     """
     detector = dlib.get_frontal_face_detector()
-
-    img = dlib.load_rgb_image(filepath)
     dets = detector(img, 1)
 
     shape = None
@@ -77,13 +75,12 @@ def face_detector(img, predictor):
     return True
 
 
-def align_face_numpy(img, predictor):
+def align_face_numpy(img_arr, predictor):
     """
-    :param filepath: str
     :return: PIL Image
     """
-
-    lm = get_landmark_numpy(img, predictor)
+    img = PIL.Image.fromarray(img_arr).convert("RGB")
+    lm = get_landmark(img, predictor)
 
     lm_chin = lm[0: 17]  # left-right
     lm_eyebrow_left = lm[17: 22]  # left-right
