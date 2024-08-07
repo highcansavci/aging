@@ -13,7 +13,7 @@ import numpy as np
 from argparse import Namespace
 from tqdm import tqdm
 import pandas as pd
-
+from PIL import Image
 import torch
 from torch import nn
 import torch.nn.functional as F
@@ -46,11 +46,17 @@ class ADFD:
         if self.opts.aging_lambda > 0:
             self.aging_loss = AgingLoss()
 
+        self.transforms_inference = transforms.Compose([
+            transforms.Resize((256, 256)),
+            transforms.ToTensor(),
+            transforms.Normalize([0.5, 0.5, 0.5], [0.5, 0.5, 0.5])])
+
     def infer(self, np_arr):
         results = None
+        img = self.transforms_inference(Image.fromarray(np_arr).convert("RGB"))
         for age_transformer in AGE_TRANSFORMERS:
             print(f"Running on target age: {age_transformer.target_age}")
-            input_age_batch = [age_transformer(np_arr).to('cuda')]
+            input_age_batch = [age_transformer(img.cpu()).to('cuda')]
             input_age_batch = torch.stack(input_age_batch)
             for input_image in input_age_batch:
                 result, sv = self.net(input_image.unsqueeze(0).to("cuda").float(
