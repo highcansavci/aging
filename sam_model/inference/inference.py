@@ -21,7 +21,7 @@ img_transforms = EXPERIMENT_ARGS['transform']
 
 def run_alignment(img):
     from sam_model.util.align_all_parallel import align_face_numpy
-    aligned_image = align_face_numpy(img=img, predictor=predictor)
+    aligned_image = align_face_numpy(img_arr=img, predictor=predictor)
     print("Aligned image has shape: {}".format(aligned_image.size))
     return aligned_image
 

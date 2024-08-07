@@ -80,7 +80,7 @@ def align_face_numpy(img_arr, predictor):
     :return: PIL Image
     """
     img = PIL.Image.fromarray(img_arr).convert("RGB")
-    lm = get_landmark(img, predictor)
+    lm = get_landmark(img_arr, predictor)
 
     lm_chin = lm[0: 17]  # left-right
     lm_eyebrow_left = lm[17: 22]  # left-right
