@@ -47,7 +47,7 @@ class ADFD:
             self.aging_loss = AgingLoss()
 
     def infer(self, np_arr):
-        results = np.zeros(shape=(1024, 1024))
+        results = None
         for age_transformer in AGE_TRANSFORMERS:
             print(f"Running on target age: {age_transformer.target_age}")
             input_age_batch = [age_transformer(np_arr).to('cuda')]
@@ -98,7 +98,12 @@ class ADFD:
                         loss.backward()
                         optimizer.step()
                 res = tensor2im(y_hat_final[0]).resize(resize_amount)
-                results = np.concatenate([results, np.array(res)], axis=1)
+                # Initialize results with the first result_image shape
+                if results is None:
+                    results = np.array(res)
+                else:
+                    # Concatenate the results along the width
+                    results = np.concatenate((results, np.array(res)), axis=1)
         return results
 
     def calc_loss(self, x, y, y_hat, target_ages, input_ages):
