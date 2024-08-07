@@ -44,7 +44,7 @@ async def execute_aging(request: Request):
             return JSONResponse(content={'error': 'The face is not found.'}, status_code=400)
         logging.info(
             "Starting to execute aging task in the sam model router layer.")
-        return JSONResponse(content=AgingController.aging_task(numpy_array), status=200)
+        return JSONResponse(content=AgingController.aging_task(numpy_array), status_code=200)
     except Exception as e:
         logging.error(f"Error processing image: {e}")
         traceback.print_exc()
