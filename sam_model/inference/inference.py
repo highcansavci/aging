@@ -54,5 +54,6 @@ def inference(img):
             if results is None:
                 results = result_image
             else:
-                # Concatenate the results along the width
-                results = np.concatenate((results, result_image), axis=1)
+                # Concatenate the results along the height
+                results = np.concatenate((results, result_image), axis=0)
+    return results

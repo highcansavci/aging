@@ -102,8 +102,8 @@ class ADFD:
                 if results is None:
                     results = np.array(res)
                 else:
-                    # Concatenate the results along the width
-                    results = np.concatenate((results, np.array(res)), axis=1)
+                    # Concatenate the results along the height
+                    results = np.concatenate((results, np.array(res)), axis=0)
         return results
 
     def calc_loss(self, x, y, y_hat, target_ages, input_ages):
