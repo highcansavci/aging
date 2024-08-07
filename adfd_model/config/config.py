@@ -1,12 +1,13 @@
 import torch
 import torchvision.transforms as transforms
 from pathlib import Path
-from sam_model.util.augmentations import AgeTransformer
+from adfd_model.util.augmentations import AgeTransformer
 
 EXPERIMENT_TYPE = 'ffhq_aging'
 BASE_DIR = Path(__file__).resolve().parent
 MODEL_PATH = BASE_DIR / '../../pretrained_models/sam_ffhq_aging.pt'
-PREDICTOR_PATH = BASE_DIR / '../../pretrained_models/shape_predictor_68_face_landmarks.dat'
+PREDICTOR_PATH = BASE_DIR / \
+    '../../pretrained_models/shape_predictor_68_face_landmarks.dat'
 
 EXPERIMENT_DATA_ARGS = {
     "ffhq_aging": {

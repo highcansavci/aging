@@ -10,7 +10,7 @@ import dlib
 import multiprocessing as mp
 import math
 
-from config.paths_config import model_paths
+from adfd_model.config.paths_config import model_paths
 SHAPE_PREDICTOR_PATH = model_paths["shape_predictor"]
 
 
