@@ -39,6 +39,11 @@ The FastAPI endpoint is working as explained below:
     - Integrated open-source face detection models (e.g. Dlib and InsightFace).
     - Utilized open-source aging transformation models (e.g., SAM and ADFD). Compared the models in terms of accuracy and speed.
 
+## Prerequisites
+* Linux or macOS
+* NVIDIA GPU + CUDA CuDNN (CPU may be possible with some modifications, but is not inherently supported)
+* Python 3.12
+
 ## Repository
 
 The project repository is hosted on GitHub: [https://github.com/highcansavci/aging](https://github.com/highcansavci/aging)
