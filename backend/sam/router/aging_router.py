@@ -34,7 +34,7 @@ async def execute_aging(request: Request):
         image_bytes = io.BytesIO(image_data)
 
         # Open the image using Pillow
-        image = Image.open(image_bytes)
+        image = Image.open(image_bytes).convert("RGB")
 
         # Convert the image to a NumPy array
         numpy_array = np.array(image)

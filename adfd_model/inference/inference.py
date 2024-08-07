@@ -22,4 +22,4 @@ def inference(np_arr):
 
 
 if __name__ == "__main__":
-    inference(np.array(Image.open("../../face.png")))
+    inference(np.array(Image.open("../../face.png").convert("RGB")))

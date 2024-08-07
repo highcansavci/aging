@@ -38,8 +38,6 @@ def check_face_availablilty(img):
 
 
 def inference(img):
-    original_image = Image.fromarray(img).convert("RGB")
-    original_image.resize((IMAGE_SIZE, IMAGE_SIZE))
     aligned_image = run_alignment(img)
     aligned_image.resize((IMAGE_SIZE, IMAGE_SIZE))
     input_image = img_transforms(aligned_image)
