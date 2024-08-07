@@ -1,18 +1,9 @@
-version: '3.8'
+version: "3.8"
 
 services:
-  aging:
-    image: aging:latest
-    build:
-      context: .
-      dockerfile: Dockerfile
-    ports:
-      - "8000:8000"
-    volumes:
-      - .:/app
-    environment:
-      - PYTHONUNBUFFERED=1
-    runtime: nvidia
+  aging_service:
+    image: aging
+    build: .
     deploy:
       resources:
         reservations:
@@ -20,4 +11,13 @@ services:
             - driver: nvidia
               count: all
               capabilities: [gpu]
-
+    ports:
+      - "80:8000"
+    volumes:
+      - /usr/local/cuda-12.1:/usr/local/cuda-12.1
+    environment:
+      CUDA_HOME: /usr/local/cuda-12.1
+      PYTHONDONTWRITEBYTECODE: 1
+      PYTHONUNBUFFERED: 1
+    command:
+      ["uvicorn", "backend.main:app", "--host", "0.0.0.0", "--port", "8000"]
