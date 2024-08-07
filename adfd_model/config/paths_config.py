@@ -10,3 +10,7 @@ model_paths = {
     'shape_predictor': 'shape_predictor_68_face_landmarks.dat',
     'age_predictor': 'pretrained_models/dex_age_classifier.pth'
 }
+
+analyzation_path = {
+    'correlation_analysis': 'pretrained_models/correlation_analysis.pkl',
+}
