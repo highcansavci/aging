@@ -78,7 +78,7 @@ version: "3.8"
 
 services:
   aging_service:
-    image: aging
+    image: karabairak/aging:latest
     build: .
     deploy:
       resources:
@@ -90,9 +90,9 @@ services:
     ports:
       - "80:8000"
     volumes:
-      - /usr/local/cuda-12.1:/usr/local/cuda-12.1
+      - /usr/local/cuda-12.1:/usr/local/<cuda>
     environment:
-      CUDA_HOME: /usr/local/cuda-12.1
+      CUDA_HOME: /usr/local/<cuda>
       PYTHONDONTWRITEBYTECODE: 1
       PYTHONUNBUFFERED: 1
     command:
@@ -103,6 +103,14 @@ Then run,
 ```bash
 docker-compose up
 ```
+
+## Docker Image
+
+The Docker image for this project is available on Docker Hub. You can pull the image using the following command:
+
+```bash
+docker pull karabairak/aging:latest
+
 
 ## Usage
 You can access the endpoints and send the requests using curl or Postman.
