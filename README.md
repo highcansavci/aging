@@ -110,7 +110,7 @@ The Docker image for this project is available on Docker Hub. You can pull the i
 
 ```bash
 docker pull karabairak/aging:latest
-
+```
 
 ## Usage
 You can access the endpoints and send the requests using curl or Postman.
