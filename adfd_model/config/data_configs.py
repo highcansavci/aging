@@ -1,5 +1,5 @@
-from config import transforms_config
-from config.paths_config import dataset_paths
+from adfd_model.config import transforms_config
+from adfd_model.config.paths_config import dataset_paths
 
 
 DATASETS = {
