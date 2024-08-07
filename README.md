@@ -1,7 +1,7 @@
 # Aging Transformation API
 
 This project provides an API for face aging transformation using two models: ADFD and SAM. The backend is developed in Python, utilizing FastAPI, and deployed on a Google Cloud Platform (GCP) instance with Docker.
-It is seen that SAM has the better speed and accuracy compared to ADFD. **The project needs NVIDIA-CUDA-cuDNN support when integrated**
+It is seen that SAM has the better speed and accuracy compared to ADFD. **The project needs NVIDIA-CUDA-cuDNN support when integrated.**
 
 ## Project Definition
 
