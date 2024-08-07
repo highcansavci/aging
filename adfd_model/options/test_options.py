@@ -8,6 +8,8 @@ class TestOptions:
         self.initialize()
 
     def initialize(self):
+        self.parser.add_argument('--resize_outputs', action='store_true',
+                                 help='Whether to resize outputs to 256x256 or keep at 1024x1024')
         self.parser.add_argument('--checkpoint_path', default="pretrained_models/sam_ffhq_aging.pt", type=str,
                                  help='Path to pSp model checkpoint')
         self.parser.add_argument('--test_workers', default=2, type=int,
