@@ -9,8 +9,8 @@ from torch import nn
 import math
 
 from adfd_model.config.paths_config import model_paths
-from adfd_model.models.encoders import psp_encoders
-from adfd_model.models.stylegan2.model import Generator
+from models.encoders import psp_encoders
+from models.stylegan2.model import Generator
 
 
 class pSp(nn.Module):
@@ -63,19 +63,25 @@ class pSp(nn.Module):
                 self.pretrained_encoder = self.__load_pretrained_psp_encoder()
                 self.pretrained_encoder.eval()
 
-    def forward(self, x, resize=True, latent_mask=None, input_code=False, randomize_noise=True,
-                inject_latent=None, return_latents=False, alpha=None, input_is_full=False):
+    def forward(self, x, latent=None, resize=True, latent_mask=None, input_code=False, randomize_noise=True,
+                inject_latent=None, return_latents=False, alpha=None, input_is_full=False, return_s=False):
         if input_code:
             codes = x
         else:
             codes = self.encoder(x)
+            # residual step
+            if latent is not None:
+                # if x.shape[1] == 7 and latent is not None: # iterative5_train_3
+                # learn error with respect to previous iteration
+                codes = codes + latent
             # normalize with respect to the center of an average face
-            if self.opts.start_from_latent_avg:
+            elif self.opts.start_from_latent_avg:
                 codes = codes + self.latent_avg
             # normalize with respect to the latent of the encoded image of pretrained pSp encoder
             elif self.opts.start_from_encoded_w_plus:
                 with torch.no_grad():
                     encoded_latents = self.pretrained_encoder(x[:, :-1, :, :])
+                    # encoded_latents = self.pretrained_encoder(x[:, :-4, :, :]) # iterative5_train_3
                     encoded_latents = encoded_latents + self.latent_avg
                 codes = codes + encoded_latents
 
@@ -94,12 +100,13 @@ class pSp(nn.Module):
         images, result_latent = self.decoder([codes],
                                              input_is_latent=input_is_latent,
                                              randomize_noise=randomize_noise,
-                                             return_latents=return_latents)
+                                             return_latents=return_latents,
+                                             return_s=return_s)
 
         if resize:
             images = self.face_pool(images)
 
-        if return_latents:
+        if return_latents or return_s:
             return images, result_latent
         else:
             return images

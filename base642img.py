@@ -2,7 +2,6 @@ from PIL import Image
 import base64
 import io
 import json
-from sam_model.config.config import TARGET_AGES
 
 
 def base642img(base64_img, age):
@@ -17,8 +16,8 @@ def base642img(base64_img, age):
 
 
 if __name__ == "__main__":
-
-    with open('user_data.json', 'r') as file:
+    TARGET_AGES = [10, 30, 50, 70]
+    with open('results.json', 'r') as file:
         data = json.load(file)
         for age in TARGET_AGES:
             base642img(data[f"age_{age}"], age)
