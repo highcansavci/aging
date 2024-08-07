@@ -6,6 +6,7 @@ from PIL import Image
 import numpy as np
 from backend.adfd.controller.aging_controller import AgingController
 import logging
+import traceback
 
 router = APIRouter()
 
@@ -46,6 +47,7 @@ async def execute_aging(request: Request):
         return JSONResponse(content=AgingController.aging_task(numpy_array), status=200)
     except Exception as e:
         logging.error(f"Error processing image: {e}")
+        traceback.print_exc()
         return JSONResponse(
             content={"detail": [{"type": "error", "msg": str(e)}]},
             status_code=500
