@@ -25,10 +25,10 @@ class AgingService:
         logging.info("Executing aging task in the adfd model service layer.")
         result = inference(np_arr)
         return {
-            'age_10': AgingService.__numpy2base64(np_arr[0:1024, ...]),
-            'age_30': AgingService.__numpy2base64(np_arr[1024:2048, ...]),
-            'age_50': AgingService.__numpy2base64(np_arr[2048:3096, ...]),
-            'age_70': AgingService.__numpy2base64(np_arr[3096:, ...])
+            'age_10': AgingService.__numpy2base64(result[0:1024, ...]),
+            'age_30': AgingService.__numpy2base64(result[1024:2048, ...]),
+            'age_50': AgingService.__numpy2base64(result[2048:3096, ...]),
+            'age_70': AgingService.__numpy2base64(result[3096:, ...])
         }
 
     @staticmethod
