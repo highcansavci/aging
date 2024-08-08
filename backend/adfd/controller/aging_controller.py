@@ -1,9 +1,5 @@
 import logging
 from backend.adfd.service.aging_service import AgingService
-import sys
-sys.path.append("..")
-sys.path.append("../..")
-sys.path.append("../../..")
 
 
 class AgingController:

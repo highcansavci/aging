@@ -3,10 +3,6 @@ import base64
 import io
 from PIL import Image
 from adfd_model.inference.inference import inference, check_face_availablilty
-import sys
-sys.path.append("..")
-sys.path.append("../..")
-sys.path.append("../../..")
 
 
 class AgingService:

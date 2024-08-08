@@ -7,10 +7,6 @@ import io
 import base64
 from fastapi.responses import JSONResponse
 from fastapi import APIRouter, Request
-import sys
-sys.path.append("..")
-sys.path.append("../..")
-sys.path.append("../../..")
 
 router = APIRouter()
 

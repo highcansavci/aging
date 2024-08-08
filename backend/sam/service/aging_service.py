@@ -3,10 +3,6 @@ from PIL import Image
 import io
 import base64
 import logging
-import sys
-sys.path.append("..")
-sys.path.append("../..")
-sys.path.append("../../..")
 
 
 class AgingService:
