@@ -1,12 +1,16 @@
-from fastapi import APIRouter, Request
-from fastapi.responses import JSONResponse
-import base64
-import io
-from PIL import Image
-import numpy as np
-from backend.sam.controller.aging_controller import AgingController
-import logging
 import traceback
+import logging
+from backend.sam.controller.aging_controller import AgingController
+import numpy as np
+from PIL import Image
+import io
+import base64
+from fastapi.responses import JSONResponse
+from fastapi import APIRouter, Request
+import sys
+sys.path.append("..")
+sys.path.append("../..")
+sys.path.append("../../..")
 
 router = APIRouter()
 

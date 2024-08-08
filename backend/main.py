@@ -1,7 +1,11 @@
-from fastapi import FastAPI
-from backend.sam.router.aging_router import router as sam_aging_router
-from backend.adfd.router.aging_router import router as adfd_aging_router
 from backend.log.config import setup_logging
+from backend.adfd.router.aging_router import router as adfd_aging_router
+from backend.sam.router.aging_router import router as sam_aging_router
+from fastapi import FastAPI
+import sys
+sys.path.append("..")
+sys.path.append("../..")
+sys.path.append("../../..")
 
 app = FastAPI()
 setup_logging()

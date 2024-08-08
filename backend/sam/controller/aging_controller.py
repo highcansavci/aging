@@ -1,5 +1,9 @@
-from backend.sam.service.aging_service import AgingService
 import logging
+from backend.sam.service.aging_service import AgingService
+import sys
+sys.path.append("..")
+sys.path.append("../..")
+sys.path.append("../../..")
 
 
 class AgingController:

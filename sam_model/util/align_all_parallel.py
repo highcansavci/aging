@@ -120,7 +120,7 @@ def align_face_numpy(img_arr, predictor):
     if shrink > 1:
         rsize = (int(np.rint(float(img.size[0]) / shrink)),
                  int(np.rint(float(img.size[1]) / shrink)))
-        img = img.resize(rsize, PIL.Image.ANTIALIAS)
+        img = img.resize(rsize, PIL.Image.Resampling.LANCZOS)
         quad /= shrink
         qsize /= shrink
 

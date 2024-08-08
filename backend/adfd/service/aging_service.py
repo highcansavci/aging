@@ -1,8 +1,12 @@
-from adfd_model.inference.inference import inference, check_face_availablilty
-from PIL import Image
-import io
-import base64
 import logging
+import base64
+import io
+from PIL import Image
+from adfd_model.inference.inference import inference, check_face_availablilty
+import sys
+sys.path.append("..")
+sys.path.append("../..")
+sys.path.append("../../..")
 
 
 class AgingService:
