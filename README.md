@@ -127,6 +127,7 @@ curl -X POST "http://34.91.249.118:80/api/aging/sam_model" -H "Content-Type: app
 * demo.py: Converts a given image into a Base64 encoded string.
 * base642img.py: Converts the response to the images with age transformations.
 
-* (*) Now inactive, reach me for the demo.
+
+## (*) Now inactive, reach me for the demo.
 
 
